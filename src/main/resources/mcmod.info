@@ -1,0 +1,6 @@
+[{
+  "modid": "toolsdoneright",
+  "name": "Tools Done Right",
+  "version": "${modVersion}",
+  "mcversion": "${mcVersion}"
+}]

@@ -15,7 +15,7 @@ sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 ext {
     mcVersion = '1.8.9'
     forgeVersion = '11.15.1.2318'
-    modVersion = '2.0'
+    modVersion = '2.0-alpha'
     mcpMappings = 'stable_22'
 }
 

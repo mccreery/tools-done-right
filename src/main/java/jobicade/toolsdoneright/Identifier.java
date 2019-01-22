@@ -43,29 +43,29 @@ public class Identifier {
 	public enum Format {
 		LOWERCASE {
 			@Override
-			public void append(StringBuilder builder, int i, String word) {
+			protected void append(StringBuilder builder, int i, String word) {
 				builder.append(word);
 			}
 		}, SNAKE {
 			@Override
-			public void append(StringBuilder builder, int i, String word) {
+			protected void append(StringBuilder builder, int i, String word) {
 				if(i > 0) builder.append('_');
 				builder.append(word);
 			}
 		}, UPPERCASE {
 			@Override
-			public void append(StringBuilder builder, int i, String word) {
+			protected void append(StringBuilder builder, int i, String word) {
 				builder.append(word.toUpperCase());
 			}
 		}, CONSTANT {
 			@Override
-			public void append(StringBuilder builder, int i, String word) {
+			protected void append(StringBuilder builder, int i, String word) {
 				if(i > 0) builder.append('_');
 				builder.append(word.toUpperCase());
 			}
 		}, CAMELCASE {
 			@Override
-			public void append(StringBuilder builder, int i, String word) {
+			protected void append(StringBuilder builder, int i, String word) {
 				if(word != null && !word.isEmpty()) {
 					builder.append(Character.toUpperCase(word.charAt(0)));
 					builder.append(word, 1, word.length());
@@ -73,7 +73,7 @@ public class Identifier {
 			}
 		}, HEADLESS {
 			@Override
-			public void append(StringBuilder builder, int i, String word) {
+			protected void append(StringBuilder builder, int i, String word) {
 				(i > 0 ? CAMELCASE : LOWERCASE).append(builder, i, word);
 			}
 		};

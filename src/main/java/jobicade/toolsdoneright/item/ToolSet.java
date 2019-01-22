@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import java.util.stream.Stream;
 
 import jobicade.toolsdoneright.Identifier;
+import jobicade.toolsdoneright.Items;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
@@ -28,10 +29,7 @@ public class ToolSet {
 
         for(ToolType type : ToolType.values()) {
             Item item = createItem(type);
-            Identifier name = getIdentifier(type);
-
-            item.setRegistryName(name.format(SNAKE));
-            item.setTranslationKey(name.format(HEADLESS));
+            Items.setNames(item, getIdentifier(type));
             itemMap.put(type, item);
         }
     }

@@ -3,6 +3,7 @@ package jobicade.toolsdoneright;
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -13,8 +14,8 @@ import com.google.common.collect.ImmutableList;
 import org.apache.commons.lang3.StringUtils;
 
 public class Identifier {
-	private final ImmutableList<String> tokensLower;
-	private final EnumMap<Format, String> formattedNames = new EnumMap<>(Format.class);
+	private final List<String> tokensLower;
+	private final Map<Format, String> formattedNames = new EnumMap<>(Format.class);
 
 	public Identifier(List<String> tokens) { this(tokens.stream()); }
 	public Identifier(String... tokens) { this(Arrays.stream(tokens)); }

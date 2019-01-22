@@ -14,6 +14,12 @@ item.rubyAxe.name=Ruby Axe
 item.rubyShovel.name=Ruby Shovel
 item.rubyHoe.name=Ruby Hoe
 
+item.topazSword.name=Topaz Sword
+item.topazPickaxe.name=Topaz Pickaxe
+item.topazAxe.name=Topaz Axe
+item.topazShovel.name=Topaz Shovel
+item.topazHoe.name=Topaz Hoe
+
 item.sapphireSword.name=Sapphire Sword
 item.sapphirePickaxe.name=Sapphire Pickaxe
 item.sapphireAxe.name=Sapphire Axe

@@ -19,12 +19,11 @@ public class Items {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        setNames(emeraldPickaxe, new Identifier("emeraldPickaxe"));
-        event.getRegistry().register(emeraldPickaxe);
-    }
+        Identifier name = new Identifier("emeraldPickaxe");
 
-    private static void setNames(Item item, Identifier name) {
-        item.setRegistryName(name.format(SNAKE));
-        item.setTranslationKey(name.format(HEADLESS));
+        emeraldPickaxe.setRegistryName(name.format(SNAKE));
+        emeraldPickaxe.setTranslationKey(name.format(HEADLESS));
+        ToolsDoneRight.proxy.registerDefaultItemModel(emeraldPickaxe);
+        event.getRegistry().register(emeraldPickaxe);
     }
 }

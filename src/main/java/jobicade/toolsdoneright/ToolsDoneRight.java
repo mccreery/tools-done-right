@@ -17,11 +17,10 @@ public class ToolsDoneRight {
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         logger = e.getModLog();
-        logger.info("PreInit complete.");
     }
 
     @EventHandler
     public void init(FMLInitializationEvent e) {
-        logger.info("Init complete.");
+        Items.init();
     }
 }

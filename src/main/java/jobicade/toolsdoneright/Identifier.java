@@ -1,73 +1,55 @@
 package jobicade.toolsdoneright;
 
-import java.util.Collections;
+import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.google.common.collect.ImmutableList;
 
-import net.minecraft.util.ResourceLocation;
+import org.apache.commons.lang3.StringUtils;
 
-public class Identifier extends ResourceLocation {
-	private final List<String> tokens;
-	private final Format format;
+public class Identifier {
+	private final ImmutableList<String> tokensLower;
+	private final EnumMap<Format, String> formattedNames = new EnumMap<>(Format.class);
 
-	public Identifier(String name) {
-		this(name, null);
+	public Identifier(List<String> tokens) { this(tokens.stream()); }
+	public Identifier(String... tokens) { this(Arrays.stream(tokens)); }
+	public Identifier(String formattedName) { this(splitTokens(formattedName)); }
+
+	private Identifier(Stream<String> tokens) {
+		this.tokensLower = tokens.map(String::toLowerCase).collect(ImmutableList.toImmutableList());
 	}
 
-	public Identifier(String name, Format format) {
-		super(ToolsDoneRight.MODID, name);
-		this.tokens = tokenize(name);
-		this.format = format;
+	private static List<String> splitTokens(String formattedName) {
+		String[] split = StringUtils.splitByCharacterTypeCamelCase(formattedName);
+		return Arrays.stream(split).filter(ALLOWED_TOKENS).collect(Collectors.toList());
 	}
 
-	public Identifier(List<String> tokens, Format format) {
-		super(ToolsDoneRight.MODID, format.apply(tokens));
-		this.tokens = tokens;
-		this.format = format;
-	}
-
-	private static final Pattern TOKENIZER = Pattern.compile(
-		"[_-]|(?<!\\p{Lu}|[_-])(?=\\p{Lu})" + // Capital letters
-		"|(?<!\\d|[_-])(?=\\d)" +             // Digits start
-		"|(?<=\\d)(?!\\d)");                  // Digits end
-
-	private static List<String> tokenize(String name) {
-		if(name != null && !name.isEmpty()) {
-			return ImmutableList.copyOf(TOKENIZER.split(name));
-		} else {
-			return Collections.emptyList();
-		}
-	}
+	private static final Predicate<String> ALLOWED_TOKENS = Pattern.compile("^[A-Za-z0-9]+$").asPredicate();
 
 	public List<String> getTokens() {
-		return tokens;
+		return tokensLower;
 	}
 
-	public Format getFormat() {
-		return format;
-	}
-
-	public Identifier withFormat(Format format) {
-		if(format == this.format) {
-			return this;
-		} else {
-			return new Identifier(format.apply(this), format);
-		}
+	public String format(Format format) {
+		return formattedNames.computeIfAbsent(format, f -> f.apply(tokensLower));
 	}
 
 	public enum Format {
 		LOWERCASE {
 			@Override
 			public void append(StringBuilder builder, int i, String word) {
-				builder.append(word.toLowerCase());
+				builder.append(word);
 			}
 		}, SNAKE {
 			@Override
 			public void append(StringBuilder builder, int i, String word) {
 				if(i > 0) builder.append('_');
-				LOWERCASE.append(builder, i, word);
+				builder.append(word);
 			}
 		}, UPPERCASE {
 			@Override
@@ -78,14 +60,14 @@ public class Identifier extends ResourceLocation {
 			@Override
 			public void append(StringBuilder builder, int i, String word) {
 				if(i > 0) builder.append('_');
-				UPPERCASE.append(builder, i, word);
+				builder.append(word.toUpperCase());
 			}
 		}, CAMELCASE {
 			@Override
 			public void append(StringBuilder builder, int i, String word) {
 				if(word != null && !word.isEmpty()) {
 					builder.append(Character.toUpperCase(word.charAt(0)));
-					builder.append(word.toLowerCase(), 1, word.length());
+					builder.append(word, 1, word.length());
 				}
 			}
 		}, HEADLESS {
@@ -96,10 +78,6 @@ public class Identifier extends ResourceLocation {
 		};
 
 		protected abstract void append(StringBuilder builder, int i, String word);
-
-		private final String apply(Identifier identifier) {
-			return apply(identifier.tokens);
-		}
 
 		private final String apply(List<String> tokens) {
 			StringBuilder builder = new StringBuilder();

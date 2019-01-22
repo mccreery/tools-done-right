@@ -3,10 +3,13 @@ package jobicade.toolsdoneright;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import static jobicade.toolsdoneright.Identifier.Format.*;
 
+@EventBusSubscriber
 public class Items {
     public static final ToolMaterial GEM      = EnumHelper.addToolMaterial("gem", 2, 200, 10.0f, 2.5f, 30);
     public static final ToolMaterial OBSIDIAN = EnumHelper.addToolMaterial("obsidian", 3, 4000, 3.5f, 2.0f, 5);
@@ -14,15 +17,14 @@ public class Items {
 
     public static final Item emeraldPickaxe = new ItemEmeraldPickaxe();
 
-    public static void init() {
-        registerItem(emeraldPickaxe, new Identifier("emeraldPickaxe", HEADLESS));
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event) {
+        setNames(emeraldPickaxe, new Identifier("emeraldPickaxe"));
+        event.getRegistry().register(emeraldPickaxe);
     }
 
-    private static void registerItem(Item item, Identifier name) {
-        Identifier snake = name.withFormat(SNAKE);
-
-        item.setRegistryName(snake);
-        item.setUnlocalizedName(name.withFormat(HEADLESS).getResourcePath());
-        GameRegistry.registerItem(item, snake.getResourcePath());
+    private static void setNames(Item item, Identifier name) {
+        item.setRegistryName(name.format(SNAKE));
+        item.setTranslationKey(name.format(HEADLESS));
     }
 }

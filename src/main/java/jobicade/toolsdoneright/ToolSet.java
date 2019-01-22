@@ -17,8 +17,8 @@ import net.minecraftforge.client.model.ModelLoader;
 import static jobicade.toolsdoneright.Identifier.Format.*;
 
 public class ToolSet {
-    private final ToolMaterial material;
-    private final Identifier baseName;
+    protected final ToolMaterial material;
+    protected final Identifier baseName;
     private final Map<ToolType, Item> itemMap = new EnumMap<>(ToolType.class);
 
     public ToolSet(ToolMaterial material, Identifier baseName) {

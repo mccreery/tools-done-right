@@ -1,6 +1,8 @@
 package jobicade.toolsdoneright;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.util.EnumHelper;
@@ -19,7 +21,7 @@ public class Items {
     public static final ToolMaterial OBSIDIAN = EnumHelper.addToolMaterial("obsidian", 3, 4000, 3.5f, 2.0f, 5);
     public static final ToolMaterial END      = EnumHelper.addToolMaterial("end", 3, 1000, 8.0f, 3.0f, 20);
 
-    public static final ToolSet EMERALD_TOOLS  = new ToolSet(GEM, new Identifier("emerald"));
+    public static final ToolSet EMERALD_TOOLS  = new ToolSetEmerald();
     public static final ToolSet RUBY_TOOLS     = new ToolSet(GEM, new Identifier("ruby"));
     public static final ToolSet SAPPHIRE_TOOLS = new ToolSet(GEM, new Identifier("sapphire"));
     public static final ToolSet OBSIDIAN_TOOLS = new ToolSet(GEM, new Identifier("obsidian"));
@@ -39,5 +41,14 @@ public class Items {
         for(ToolSet set : TOOL_SETS) {
             set.registerModels();
         }
+    }
+
+    /**
+     * Helper method for items with one enchantment.
+     */
+    public static ItemStack getStackWithEnchantment(Item item, Enchantment enchantment, int level) {
+        ItemStack stack = new ItemStack(item);
+        stack.addEnchantment(enchantment, level);
+        return stack;
     }
 }

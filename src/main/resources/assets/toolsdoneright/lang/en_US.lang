@@ -37,3 +37,11 @@ item.endPickaxe.name=End Pickaxe
 item.endAxe.name=End Axe
 item.endShovel.name=End Shovel
 item.endHoe.name=End Hoe
+
+tile.rubyOre.name=Ruby Ore
+tile.topazOre.name=Topaz Ore
+tile.sapphireOre.name=Sapphire Ore
+
+tile.rubyBlock.name=Block of Ruby
+tile.topazBlock.name=Block of Topaz
+tile.sapphireBlock.name=Block of Sapphire

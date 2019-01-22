@@ -1,9 +1,11 @@
 package jobicade.toolsdoneright;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -51,6 +53,9 @@ public class Items {
         }
         items.addAll(ITEMS);
 
+        for(Block block : Blocks.BLOCKS) {
+            items.add(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+        }
         event.getRegistry().registerAll(items.toArray(new Item[items.size()]));
     }
 
@@ -62,6 +67,10 @@ public class Items {
 
         for(Item item : ITEMS) {
             registerDefaultModel(item);
+        }
+
+        for(Block block : Blocks.BLOCKS) {
+            registerDefaultModel(Item.getItemFromBlock(block));
         }
     }
 

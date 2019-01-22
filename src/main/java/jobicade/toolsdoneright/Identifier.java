@@ -21,7 +21,7 @@ public class Identifier {
 	public Identifier(String... tokens) { this(Arrays.stream(tokens)); }
 	public Identifier(String formattedName) { this(splitTokens(formattedName)); }
 
-	private Identifier(Stream<String> tokens) {
+	public Identifier(Stream<String> tokens) {
 		this.tokensLower = tokens.map(String::toLowerCase).collect(ImmutableList.toImmutableList());
 	}
 

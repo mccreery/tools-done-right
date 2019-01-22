@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["xx", "x|", " |"],
+  "key": {
+    "x": { "item": "minecraft:emerald" },
+    "|": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "type": "minecraft:item_nbt",
+    "item": "toolsdoneright:emerald_axe",
+    "nbt": { "ench": [{"id": 35, "lvl": 1}] }
+  }
+}

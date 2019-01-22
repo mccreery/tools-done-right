@@ -1,13 +1,14 @@
-package jobicade.toolsdoneright;
+package jobicade.toolsdoneright.item;
 
+import jobicade.toolsdoneright.Items;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Enchantments;
-import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-public class ItemPickaxeEmerald extends ItemPickaxe {
-    public ItemPickaxeEmerald(ToolMaterial material) {
+public class ItemShovelEmerald extends ItemSpade {
+    public ItemShovelEmerald(ToolMaterial material) {
         super(material);
     }
 

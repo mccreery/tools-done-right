@@ -15,6 +15,9 @@ import java.util.Set;
 
 import com.google.common.collect.ImmutableSet;
 
+import jobicade.toolsdoneright.item.ToolSet;
+import jobicade.toolsdoneright.item.ToolSetEmerald;
+
 @EventBusSubscriber
 public class Items {
     public static final ToolMaterial GEM      = EnumHelper.addToolMaterial("gem", 2, 200, 10.0f, 2.5f, 30);

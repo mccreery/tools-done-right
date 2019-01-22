@@ -1,4 +1,4 @@
-package jobicade.toolsdoneright;
+package jobicade.toolsdoneright.item;
 
 import java.util.Collection;
 import java.util.EnumMap;
@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Stream;
 
+import jobicade.toolsdoneright.Identifier;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;

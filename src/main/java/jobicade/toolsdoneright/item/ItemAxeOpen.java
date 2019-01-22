@@ -1,4 +1,4 @@
-package jobicade.toolsdoneright;
+package jobicade.toolsdoneright.item;
 
 import net.minecraft.item.ItemAxe;
 

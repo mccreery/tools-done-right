@@ -1,5 +1,7 @@
-package jobicade.toolsdoneright;
+package jobicade.toolsdoneright.item;
 
+import jobicade.toolsdoneright.Identifier;
+import jobicade.toolsdoneright.Items;
 import net.minecraft.item.Item;
 
 public class ToolSetEmerald extends ToolSet {

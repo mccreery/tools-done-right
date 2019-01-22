@@ -4,7 +4,6 @@ import org.apache.logging.log4j.Logger;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = ToolsDoneRight.MODID, name = "Tools Done Right", version = "2.0-alpha")
@@ -17,10 +16,5 @@ public class ToolsDoneRight {
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         logger = e.getModLog();
-    }
-
-    @EventHandler
-    public void init(FMLInitializationEvent e) {
-        Items.init();
     }
 }

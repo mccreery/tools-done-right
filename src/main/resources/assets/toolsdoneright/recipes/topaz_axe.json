@@ -1,0 +1,1 @@
+{"type": "minecraft:crafting_shaped", "pattern": ["xx", "x|", " |"], "key": {"x": {"item": "toolsdoneright:topaz"}, "|": {"item": "minecraft:stick"}}, "result": {"item": "toolsdoneright:topaz_axe"}}

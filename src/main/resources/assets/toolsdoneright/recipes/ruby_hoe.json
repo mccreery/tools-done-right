@@ -1,0 +1,1 @@
+{"type": "minecraft:crafting_shaped", "pattern": ["xx", " |", " |"], "key": {"x": {"item": "toolsdoneright:ruby"}, "|": {"item": "minecraft:stick"}}, "result": {"item": "toolsdoneright:ruby_hoe"}}

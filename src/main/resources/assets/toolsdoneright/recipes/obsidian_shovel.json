@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["x", "|", "|"],
+  "key": {
+    "x": { "item": "minecraft:obsidian" },
+    "|": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "toolsdoneright:obsidian_shovel"
+  }
+}

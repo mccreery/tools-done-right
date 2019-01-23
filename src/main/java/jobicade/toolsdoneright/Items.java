@@ -36,8 +36,8 @@ public class Items {
     public static final ToolSet RUBY_TOOLS     = new ToolSet(GEM, new Identifier("ruby"));
     public static final ToolSet TOPAZ_TOOLS    = new ToolSet(GEM, new Identifier("topaz"));
     public static final ToolSet SAPPHIRE_TOOLS = new ToolSet(GEM, new Identifier("sapphire"));
-    public static final ToolSet OBSIDIAN_TOOLS = new ToolSet(GEM, new Identifier("obsidian"));
-    public static final ToolSet END_TOOLS      = new ToolSet(GEM, new Identifier("end"));
+    public static final ToolSet OBSIDIAN_TOOLS = new ToolSet(OBSIDIAN, new Identifier("obsidian"));
+    public static final ToolSet END_TOOLS      = new ToolSet(END, new Identifier("end"));
     private static final Set<ToolSet> TOOL_SETS = ImmutableSet.of(EMERALD_TOOLS, RUBY_TOOLS, TOPAZ_TOOLS, SAPPHIRE_TOOLS, OBSIDIAN_TOOLS, END_TOOLS);
 
     public static final Item RUBY = setNames(new Item().setCreativeTab(CreativeTabs.MATERIALS), new Identifier("ruby"));

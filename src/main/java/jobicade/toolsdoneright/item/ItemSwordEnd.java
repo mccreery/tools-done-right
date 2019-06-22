@@ -1,5 +1,7 @@
 package jobicade.toolsdoneright.item;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Random;
 
@@ -21,9 +23,12 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 public class ItemSwordEnd extends ItemSword {
     private static final String CAPTURE_KEY = "Capture";
+    private static Method getExperiencePoints;
 
     public ItemSwordEnd() {
         super(Items.END);
@@ -74,7 +79,7 @@ public class ItemSwordEnd extends ItemSword {
         if(!hasCapture(stack)) {
             setCapture(stack, target);
             target.world.removeEntity(target);
-            stack.damageItem(1, player);
+            damageItemExp(stack, target, player);
 
             particleEffect(target, EnumParticleTypes.PORTAL);
             target.world.playSound(player, target.posX, target.posY, target.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0f, 1.0f);
@@ -83,6 +88,26 @@ public class ItemSwordEnd extends ItemSword {
             particleEffect(target, EnumParticleTypes.SMOKE_NORMAL);
             return false;
         }
+    }
+
+    /**
+     * Deals damage to the item proportional to the amount of experience dropped by the target.
+     */
+    private void damageItemExp(ItemStack stack, EntityLivingBase target, EntityPlayer player) {
+        if(getExperiencePoints == null) {
+            getExperiencePoints = ReflectionHelper.findMethod(EntityLivingBase.class,
+                    "getExperiencePoints", "func_70693_a", EntityPlayer.class);
+        }
+
+        int experiencePoints;
+        try {
+            experiencePoints = (int)getExperiencePoints.invoke(target, player);
+        } catch(IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+        experiencePoints = ForgeEventFactory.getExperienceDrop(target, player, experiencePoints);
+
+        stack.damageItem(experiencePoints, player);
     }
 
     /**

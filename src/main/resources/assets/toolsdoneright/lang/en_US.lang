@@ -45,3 +45,5 @@ tile.sapphireOre.name=Sapphire Ore
 tile.rubyBlock.name=Block of Ruby
 tile.topazBlock.name=Block of Topaz
 tile.sapphireBlock.name=Block of Sapphire
+
+toolsdoneright.captured=Captured: §5%s

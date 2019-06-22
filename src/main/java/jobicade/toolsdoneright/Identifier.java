@@ -1,6 +1,7 @@
 package jobicade.toolsdoneright;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,13 @@ public class Identifier {
 
 	public Identifier(Stream<String> tokens) {
 		this.tokensLower = tokens.map(String::toLowerCase).collect(ImmutableList.toImmutableList());
+	}
+
+	public Identifier concat(Collection<String> tokens) { return concat(tokens.stream()); }
+	public Identifier concat(String... tokens) { return concat(Arrays.stream(tokens)); }
+
+	public Identifier concat(Stream<String> tokens) {
+		return new Identifier(Stream.concat(tokensLower.stream(), tokens));
 	}
 
 	private static List<String> splitTokens(String formattedName) {

@@ -38,7 +38,7 @@ public class ToolSet {
         return itemMap.values();
     }
 
-    private final Identifier getIdentifier(ToolType type) {
+    protected final Identifier getIdentifier(ToolType type) {
         Stream<String> tokensStream = Stream.concat(
             baseName.getTokens().stream(),
             type.getExtension().getTokens().stream());

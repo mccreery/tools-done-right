@@ -20,6 +20,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -32,6 +33,10 @@ public class ItemSwordEnd extends ItemSword {
 
     public ItemSwordEnd() {
         super(Items.END);
+
+        addPropertyOverride(new ResourceLocation(ToolsDoneRight.MODID, "closed"), (stack, world, entity) -> {
+            return hasCapture(stack) ? 1 : 0;
+        });
     }
 
     @Override

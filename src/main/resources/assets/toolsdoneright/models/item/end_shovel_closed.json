@@ -1,0 +1,4 @@
+{
+    "parent": "item/handheld",
+    "textures": { "layer0": "toolsdoneright:items/end_shovel_closed" }
+  }

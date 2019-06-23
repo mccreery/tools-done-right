@@ -12,7 +12,11 @@ public class ToolSetEnd extends ToolSet {
     @Override
     protected Item createItem(ToolType type) {
         switch(type) {
-            case SWORD: return new ItemSwordEnd();
+            case SWORD: return new ItemEndSword(material);
+            case PICKAXE: return new ItemEndPickaxe(material);
+            case AXE: return new ItemEndAxe(material);
+            case SHOVEL: return new ItemEndShovel(material);
+            case HOE: return new ItemEndHoe(material);
             default: return super.createItem(type);
         }
     }

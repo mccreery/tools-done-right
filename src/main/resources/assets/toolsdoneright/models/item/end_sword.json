@@ -2,7 +2,7 @@
   "parent": "item/handheld",
   "textures": { "layer0": "toolsdoneright:items/end_sword" },
   "overrides": [{
-    "predicate": { "toolsdoneright:closed": 1 },
+    "predicate": { "toolsdoneright:blink": 0.5 },
     "model": "toolsdoneright:item/end_sword_closed"
   }]
 }

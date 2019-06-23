@@ -4,8 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import jobicade.toolsdoneright.Items;
-import jobicade.toolsdoneright.ToolsDoneRight;
+import jobicade.toolsdoneright.BlinkProperty;
+import jobicade.toolsdoneright.capability.BlinkProvider;
 import jobicade.toolsdoneright.event.EndToolEvents;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -21,23 +21,29 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-public class ItemSwordEnd extends ItemSword {
+public class ItemEndSword extends ItemSword {
     private static final String CAPTURE_KEY = "Capture";
     private static Method getExperiencePoints;
 
-    public ItemSwordEnd() {
-        super(Items.END);
+    public ItemEndSword(ToolMaterial material) {
+        super(material);
 
-        addPropertyOverride(new ResourceLocation(ToolsDoneRight.MODID, "closed"), (stack, world, entity) -> {
-            return hasCapture(stack) ? 1 : 0;
+        BlinkProperty blink = new BlinkProperty();
+        addPropertyOverride(BlinkProperty.PROP_KEY, (stack, world, entity) -> {
+            return hasCapture(stack) ? 1 : blink.apply(stack, world, entity);
         });
+    }
+
+    @Override
+    public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
+        return new BlinkProvider();
     }
 
     @Override

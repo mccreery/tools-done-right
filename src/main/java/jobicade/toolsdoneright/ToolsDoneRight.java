@@ -2,6 +2,9 @@ package jobicade.toolsdoneright;
 
 import org.apache.logging.log4j.Logger;
 
+import jobicade.toolsdoneright.capability.Blink;
+import jobicade.toolsdoneright.capability.StorageStub;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -16,5 +19,6 @@ public class ToolsDoneRight {
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         logger = e.getModLog();
+        CapabilityManager.INSTANCE.register(Blink.class, new StorageStub<Blink>(), Blink::new);
     }
 }

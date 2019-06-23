@@ -1,4 +1,8 @@
 {
   "parent": "item/handheld",
-  "textures": { "layer0": "toolsdoneright:items/end_pickaxe" }
+  "textures": { "layer0": "toolsdoneright:items/end_pickaxe" },
+  "overrides": [{
+    "predicate": { "toolsdoneright:blink": 0.5 },
+    "model": "toolsdoneright:item/end_pickaxe_closed"
+  }]
 }

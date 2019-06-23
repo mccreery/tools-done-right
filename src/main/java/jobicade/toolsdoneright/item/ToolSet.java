@@ -53,7 +53,7 @@ public class ToolSet {
             case AXE: return new ItemAxeOpen(material);
             case SHOVEL: return new ItemSpade(material);
             case HOE: return new ItemHoe(material);
-            default: throw new IllegalArgumentException(type.getExtension().format(SNAKE));
+            default: throw new IllegalArgumentException(type == null ? "null" : type.getExtension().format(SNAKE));
         }
     }
 

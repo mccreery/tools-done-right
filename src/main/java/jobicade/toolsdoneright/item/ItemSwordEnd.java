@@ -6,6 +6,7 @@ import java.util.List;
 
 import jobicade.toolsdoneright.Items;
 import jobicade.toolsdoneright.ToolsDoneRight;
+import jobicade.toolsdoneright.event.EndToolEvents;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -66,12 +67,12 @@ public class ItemSwordEnd extends ItemSword {
                 }
                 clearCapture(stack);
 
-                ToolsDoneRight.particleEffect(capture, EnumParticleTypes.PORTAL, 16);
+                EndToolEvents.particleEffect(capture, EnumParticleTypes.PORTAL, 16);
                 world.playSound(player, x, y, z, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0f, 1.0f);
             }
             return EnumActionResult.SUCCESS;
         } else {
-            ToolsDoneRight.particleEffect(world, player.getRNG(), x - 0.5, y - 0.5, z - 0.5, 1.0, 1.0, 1.0, EnumParticleTypes.SMOKE_NORMAL, 12);
+            EndToolEvents.particleEffect(world, player.getRNG(), x - 0.5, y - 0.5, z - 0.5, 1.0, 1.0, 1.0, EnumParticleTypes.SMOKE_NORMAL, 12);
             return EnumActionResult.PASS;
         }
     }
@@ -86,11 +87,11 @@ public class ItemSwordEnd extends ItemSword {
             target.world.removeEntity(target);
             damageItemExp(stack, target, player);
 
-            ToolsDoneRight.particleEffect(target, EnumParticleTypes.PORTAL, 16);
+            EndToolEvents.particleEffect(target, EnumParticleTypes.PORTAL, 16);
             target.world.playSound(player, target.posX, target.posY, target.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0f, 1.0f);
             return true;
         } else {
-            ToolsDoneRight.particleEffect(target, EnumParticleTypes.SMOKE_NORMAL, 12);
+            EndToolEvents.particleEffect(target, EnumParticleTypes.SMOKE_NORMAL, 12);
             return false;
         }
     }

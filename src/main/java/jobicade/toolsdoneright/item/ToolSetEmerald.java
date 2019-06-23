@@ -12,11 +12,11 @@ public class ToolSetEmerald extends ToolSet {
     @Override
     protected Item createItem(ToolType type) {
         switch(type) {
-            case SWORD: return new ItemSwordEmerald(material);
-            case PICKAXE: return new ItemPickaxeEmerald(material);
-            case AXE: return new ItemAxeEmerald(material);
-            case SHOVEL: return new ItemShovelEmerald(material);
-            case HOE: return new ItemHoeEmerald(material);
+            case SWORD: return new ItemEmeraldSword(material);
+            case PICKAXE: return new ItemEmeraldPickaxe(material);
+            case AXE: return new ItemEmeraldAxe(material);
+            case SHOVEL: return new ItemEmeraldShovel(material);
+            case HOE: return new ItemEmeraldHoe(material);
             default: return super.createItem(type);
         }
     }

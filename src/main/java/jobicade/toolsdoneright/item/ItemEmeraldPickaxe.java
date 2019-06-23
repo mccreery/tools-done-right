@@ -7,8 +7,8 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-public class ItemPickaxeEmerald extends ItemPickaxe {
-    public ItemPickaxeEmerald(ToolMaterial material) {
+public class ItemEmeraldPickaxe extends ItemPickaxe {
+    public ItemEmeraldPickaxe(ToolMaterial material) {
         super(material);
     }
 

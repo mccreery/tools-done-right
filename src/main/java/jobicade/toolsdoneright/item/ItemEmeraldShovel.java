@@ -3,13 +3,13 @@ package jobicade.toolsdoneright.item;
 import jobicade.toolsdoneright.Items;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Enchantments;
-import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-public class ItemAxeEmerald extends ItemAxe {
-    public ItemAxeEmerald(ToolMaterial material) {
-        super(material, 8.0f, -3.2f);
+public class ItemEmeraldShovel extends ItemSpade {
+    public ItemEmeraldShovel(ToolMaterial material) {
+        super(material);
     }
 
     @Override

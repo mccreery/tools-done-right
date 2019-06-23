@@ -1,5 +1,7 @@
 package jobicade.toolsdoneright.item;
 
+import static jobicade.toolsdoneright.Identifier.Format.SNAKE;
+
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
@@ -10,13 +12,13 @@ import jobicade.toolsdoneright.Identifier;
 import jobicade.toolsdoneright.Items;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemSword;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.client.model.ModelLoader;
-
-import static jobicade.toolsdoneright.Identifier.Format.*;
 
 public class ToolSet {
     protected final ToolMaterial material;
@@ -49,8 +51,8 @@ public class ToolSet {
     protected Item createItem(ToolType type) {
         switch(type) {
             case SWORD: return new ItemSword(material);
-            case PICKAXE: return new ItemPickaxeOpen(material);
-            case AXE: return new ItemAxeOpen(material);
+            case PICKAXE: return new ItemPickaxe(material) {};
+            case AXE: return new ItemAxe(material, 8.0f, -3.2f) {};
             case SHOVEL: return new ItemSpade(material);
             case HOE: return new ItemHoe(material);
             default: throw new IllegalArgumentException(type == null ? "null" : type.getExtension().format(SNAKE));

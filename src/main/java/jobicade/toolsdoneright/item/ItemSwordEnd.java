@@ -3,9 +3,9 @@ package jobicade.toolsdoneright.item;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.Random;
 
 import jobicade.toolsdoneright.Items;
+import jobicade.toolsdoneright.ToolsDoneRight;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -61,12 +61,12 @@ public class ItemSwordEnd extends ItemSword {
                 }
                 clearCapture(stack);
 
-                particleEffect(capture, EnumParticleTypes.PORTAL);
+                ToolsDoneRight.particleEffect(capture, EnumParticleTypes.PORTAL, 16);
                 world.playSound(player, x, y, z, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0f, 1.0f);
             }
             return EnumActionResult.SUCCESS;
         } else {
-            particleEffect(world, player.getRNG(), x - 0.5, y - 0.5, z - 0.5, 1.0, 1.0, 1.0, EnumParticleTypes.SMOKE_NORMAL);
+            ToolsDoneRight.particleEffect(world, player.getRNG(), x - 0.5, y - 0.5, z - 0.5, 1.0, 1.0, 1.0, EnumParticleTypes.SMOKE_NORMAL, 12);
             return EnumActionResult.PASS;
         }
     }
@@ -81,11 +81,11 @@ public class ItemSwordEnd extends ItemSword {
             target.world.removeEntity(target);
             damageItemExp(stack, target, player);
 
-            particleEffect(target, EnumParticleTypes.PORTAL);
+            ToolsDoneRight.particleEffect(target, EnumParticleTypes.PORTAL, 16);
             target.world.playSound(player, target.posX, target.posY, target.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1.0f, 1.0f);
             return true;
         } else {
-            particleEffect(target, EnumParticleTypes.SMOKE_NORMAL);
+            ToolsDoneRight.particleEffect(target, EnumParticleTypes.SMOKE_NORMAL, 12);
             return false;
         }
     }
@@ -127,28 +127,6 @@ public class ItemSwordEnd extends ItemSword {
             }
         }
         return true;
-    }
-
-    private static void particleEffect(EntityLivingBase entity, EnumParticleTypes particleType) {
-        particleEffect(entity.world, entity.getRNG(),
-                entity.posX - entity.width / 2, entity.posY, entity.posZ - entity.width / 2,
-                entity.width, entity.height, entity.width, particleType);
-    }
-
-    private static void particleEffect(World world, Random random,
-            double minX, double minY, double minZ, double width, double height, double depth,
-            EnumParticleTypes particleType) {
-        for(int i = 0; i < 16; i++) {
-            double x = minX + random.nextDouble() * width;
-            double y = minY + random.nextDouble() * height;
-            double z = minZ + random.nextDouble() * depth;
-
-            double dx = (random.nextDouble() - 0.5) * 0.2;
-            double dy = (random.nextDouble() - 0.5) * 0.2;
-            double dz = (random.nextDouble() - 0.5) * 0.2;
-
-            world.spawnParticle(particleType, x, y, z, dx, dy, dz);
-        }
     }
 
     // NBT utility methods

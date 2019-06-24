@@ -26,11 +26,11 @@ item.sapphireAxe.name=Sapphire Axe
 item.sapphireShovel.name=Sapphire Shovel
 item.sapphireHoe.name=Sapphire Hoe
 
-item.obsidianSword.name=Obsidian Sword
-item.obsidianPickaxe.name=Obsidian Pickaxe
-item.obsidianAxe.name=Obsidian Axe
-item.obsidianShovel.name=Obsidian Shovel
-item.obsidianHoe.name=Obsidian Hoe
+item.heavySword.name=Heavy Sword
+item.heavyPickaxe.name=Heavy Pickaxe
+item.heavyAxe.name=Heavy Axe
+item.heavyShovel.name=Heavy Shovel
+item.heavyHoe.name=Heavy Hoe
 
 item.endSword.name=End Sword
 item.endPickaxe.name=End Pickaxe

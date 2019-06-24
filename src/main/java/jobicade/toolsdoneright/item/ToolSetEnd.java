@@ -1,12 +1,12 @@
 package jobicade.toolsdoneright.item;
 
 import jobicade.toolsdoneright.Identifier;
-import jobicade.toolsdoneright.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 
 public class ToolSetEnd extends ToolSet {
-    public ToolSetEnd() {
-        super(Items.END, new Identifier("end"));
+    public ToolSetEnd(ToolMaterial material, Identifier baseName) {
+        super(material, baseName);
     }
 
     @Override

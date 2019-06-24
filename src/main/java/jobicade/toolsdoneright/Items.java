@@ -24,21 +24,22 @@ import com.google.common.collect.ImmutableSet;
 import jobicade.toolsdoneright.item.ToolSet;
 import jobicade.toolsdoneright.item.ToolSetEmerald;
 import jobicade.toolsdoneright.item.ToolSetEnd;
+import jobicade.toolsdoneright.item.ToolSetHeavy;
 
 import static jobicade.toolsdoneright.Identifier.Format.*;
 
 @EventBusSubscriber
 public class Items {
     public static final ToolMaterial GEM      = EnumHelper.addToolMaterial("gem", 2, 200, 10.0f, 2.5f, 30);
-    public static final ToolMaterial HEAVY    = EnumHelper.addToolMaterial("heavy", 3, 4000, 5.5f, 2.0f, 5);
+    public static final ToolMaterial HEAVY    = EnumHelper.addToolMaterial("heavy", 3, 2000, 5.5f, 2.0f, 5);
     public static final ToolMaterial END      = EnumHelper.addToolMaterial("end", 3, 1000, 8.0f, 3.0f, 20);
 
-    public static final ToolSet EMERALD_TOOLS  = new ToolSetEmerald();
+    public static final ToolSet EMERALD_TOOLS  = new ToolSetEmerald(GEM, new Identifier("emerald"));
     public static final ToolSet RUBY_TOOLS     = new ToolSet(GEM, new Identifier("ruby"));
     public static final ToolSet TOPAZ_TOOLS    = new ToolSet(GEM, new Identifier("topaz"));
     public static final ToolSet SAPPHIRE_TOOLS = new ToolSet(GEM, new Identifier("sapphire"));
-    public static final ToolSet HEAVY_TOOLS    = new ToolSet(HEAVY, new Identifier("heavy"));
-    public static final ToolSet END_TOOLS      = new ToolSetEnd();
+    public static final ToolSet HEAVY_TOOLS    = new ToolSetHeavy(HEAVY, new Identifier("heavy"));
+    public static final ToolSet END_TOOLS      = new ToolSetEnd(END, new Identifier("end"));
     private static final Set<ToolSet> TOOL_SETS = ImmutableSet.of(EMERALD_TOOLS, RUBY_TOOLS, TOPAZ_TOOLS, SAPPHIRE_TOOLS, HEAVY_TOOLS, END_TOOLS);
 
     public static final Item RUBY = setNames(new Item().setCreativeTab(CreativeTabs.MATERIALS), new Identifier("ruby"));

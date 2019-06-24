@@ -1,12 +1,12 @@
 package jobicade.toolsdoneright.item;
 
 import jobicade.toolsdoneright.Identifier;
-import jobicade.toolsdoneright.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 
 public class ToolSetEmerald extends ToolSet {
-    public ToolSetEmerald() {
-        super(Items.GEM, new Identifier("emerald"));
+    public ToolSetEmerald(ToolMaterial material, Identifier baseName) {
+        super(material, baseName);
     }
 
     @Override
